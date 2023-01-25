@@ -4,17 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>All starts, few finishes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+  <meta name="description" content="Schweitzer Gao">
+<meta property="og:type" content="website">
+<meta property="og:title" content="All starts, few finishes">
+<meta property="og:url" content="http://schweitzergao.github.io/index.html">
+<meta property="og:site_name" content="All starts, few finishes">
+<meta property="og:description" content="Schweitzer Gao">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Charles Gao">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="All starts, few finishes" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -42,8 +44,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">All starts, few finishes</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Charles Gao&#39;s Site</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -57,12 +63,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://schweitzergao.github.io"></form>
       </div>
     </div>
   </div>
@@ -94,126 +100,25 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p><em>这是nlp-beginner的实现日志</em></p>
-<h1 id="nlp-beginner-impl"><a href="#nlp-beginner-impl" class="headerlink" title="nlp-beginner-impl"></a>nlp-beginner-impl</h1><hr>
+<hr>
 <h2 id="Lab-1"><a href="#Lab-1" class="headerlink" title="Lab 1"></a>Lab 1</h2><p><em>test accuracy here actually means validation accuracy</em></p>
 <p>An MLP for text classification implementation from scratch only by NumPy is required in Lab 1</p>
 <p>training plot:</p>
-<p><img src="/./nlp-lab/train50.png"></p>
-<p>The accuracy on the corresponding <a target="_blank" rel="noopener" href="https://www.kaggle.com/competitions/sentiment-analysis-on-movie-reviews">Kaggle comepetition</a> is bad, just 19%</p>
-<h2 id="Lab-2"><a href="#Lab-2" class="headerlink" title="Lab 2"></a>Lab 2</h2><p>A Pytorch version of Lab 1 with CNN and RNN classifier is required in Lab 2, whose initialization shall be random or by pre-trained GLoVe vectors. Here are some results</p>
-<p><em>test accuracy here actually means validation accuracy</em></p>
-<p><em>epoch for all experiments is 50</em></p>
-<p><strong>CNN train plot</strong></p>
-<ul>
-<li>TextCNN(<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1408.5882">paper</a>) with GLoVe 50d</li>
-</ul>
-<p><em>learning rate 0.001</em></p>
-<p><em>dropout 0.5</em></p>
-<p><em>batch size 128</em></p>
-<p><em>weight decay 0.001</em></p>
-<p><img src="/./nlp-lab/cnn_50.png"></p>
-<p><strong>RNN training plots</strong></p>
-<ol>
-<li>GRU with GLoVe 50d</li>
-</ol>
-<p><em>learning rate 0.001</em></p>
-<p><em>batch size 64</em></p>
-<p><em>weight decay 1e-5</em></p>
-<p><img src="/./nlp-lab/rnn_gru_50.png"></p>
-<p>The best performance on the same competition in Lab 1 reached 60.3%</p>
-<ol start="2">
-<li>LSTM with GLoVe 100d</li>
-</ol>
-<p><em>learning rate 0.001</em></p>
-<p><em>batch size 64</em></p>
-<p><em>weight decay 1e-5</em></p>
-<p><img src="/./nlp-lab/rnn_lstm_100.png"></p>
-<p>but the best performance is 59.2%, a little bit worse than GRU</p>
-<p>Further experiments are needed to find out whether this is because of the change of NN structur or the dimension of word vector</p>
-<ol start="3">
-<li>GRU with GLoVe 100d</li>
-</ol>
-<p><em>learning rate 0.001</em></p>
-<p><em>batch size 64</em></p>
-<p><em>weight decay 1e-5</em></p>
-<p><img src="/./nlp-lab/rnn_gru_100.png"></p>
-<p>The best performance on the same competition in Lab 1 reached 61.3%</p>
-<p><em>By comparing experiment 2 and 3, it can be concluded that it is the structure of the network that influences the result.</em></p>
-<p><em>A possible reason for this is the parameters in the hidden layer of LSTM(a tuple of 2 tensors) is more than that in GRU(1 tensor). So it is prone to overfit.</em></p>
-<ol start="4">
-<li>Bi-GRU with GLoVe 100d</li>
-</ol>
-<p><em>learning rate 0.001</em></p>
-<p><em>batch size 64</em></p>
-<p><em>weight decay 1e-4</em></p>
-<p><img src="/./nlp-lab/rnn_bigru_100.png"></p>
-<p>The best performance on the same competition in Lab 1 is 60.7%</p>
-<p><em>I do not know why Bi-GRU or Bi-LSTM won’t improve performance. Maybe there is better hyper-parameter combinations.</em></p>
-<p><em>Besides I also tried gradient clipping but it will do bad to this lab because the amount of training data is not large(at 10^5 level). Gradient boom won’t appear.</em></p>
-<p><em>This is the end of lab 2</em></p>
-<h2 id="Lab-3"><a href="#Lab-3" class="headerlink" title="Lab 3"></a>Lab 3</h2><hr>
-<h2 id="Lab-4"><a href="#Lab-4" class="headerlink" title="Lab 4"></a>Lab 4</h2><hr>
-<h2 id="Lab-5"><a href="#Lab-5" class="headerlink" title="Lab 5"></a>Lab 5</h2>
+<p><img src="/2023/01/25/nlp-lab/train50.png"></p>
+        
+          <p class="article-more-link">
+            <a href="/2023/01/25/nlp-lab/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/25/nlp-lab/" data-id="cldbqe3nz0000xcnx4vqjcdc5" data-title="nlp-lab" class="article-share-link">Share</a>
+      <a data-url="http://schweitzergao.github.io/2023/01/25/nlp-lab/" data-id="cldbqe3nz0000xcnx4vqjcdc5" data-title="nlp-lab" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-01-25T12:56:38.460Z" itemprop="datePublished">2023-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/25/hello-world/" data-id="cldbod9k1000060nx7jjf5atd" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -233,7 +138,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
     </div>
@@ -243,7 +148,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/NLP/" style="font-size: 10px;">NLP</a>
     </div>
@@ -252,9 +157,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li></ul>
     </div>
   </div>
 
@@ -262,16 +167,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2023/01/25/nlp-lab/">nlp-lab</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/25/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -287,7 +188,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2023 John Doe<br>
+      &copy; 2023 Charles Gao<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
