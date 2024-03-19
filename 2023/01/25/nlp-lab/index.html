@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"schweitzergao.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是复旦大学nlp-beginner项目的实现日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nlp-beginner实现日志">
+<meta property="og:url" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/index.html">
+<meta property="og:site_name" content="All embarks, few finishes">
+<meta property="og:description" content="这是复旦大学nlp-beginner项目的实现日志">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/train50.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/cnn_50.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/rnn_gru_50.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/rnn_lstm_100.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/rnn_gru_100.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/rnn_bigru_100.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/30_loss.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/30_acc.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/crf-1.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/crf-2.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/100_gru_10.png">
+<meta property="og:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/100_gru_14.png">
+<meta property="article:published_time" content="2023-01-25T13:39:38.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:28:08.257Z">
+<meta property="article:author" content="Charles Gao">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://schweitzergao.github.io/2023/01/25/nlp-lab/train50.png">
+
+
+<link rel="canonical" href="http://schweitzergao.github.io/2023/01/25/nlp-lab/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://schweitzergao.github.io/2023/01/25/nlp-lab/","path":"2023/01/25/nlp-lab/","title":"nlp-beginner实现日志"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>nlp-beginner实现日志 | All embarks, few finishes</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">All embarks, few finishes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Charles Gao's Site</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-1"><span class="nav-number">1.</span> <span class="nav-text">Lab 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-2"><span class="nav-number">2.</span> <span class="nav-text">Lab 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-3"><span class="nav-number">3.</span> <span class="nav-text">Lab 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-4"><span class="nav-number">4.</span> <span class="nav-text">Lab 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-5"><span class="nav-number">5.</span> <span class="nav-text">Lab 5</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charles Gao</p>
+  <div class="site-description" itemprop="description">Schweitzer Gao</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://schweitzergao.github.io/2023/01/25/nlp-lab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charles Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All embarks, few finishes">
+      <meta itemprop="description" content="Schweitzer Gao">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="nlp-beginner实现日志 | All embarks, few finishes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nlp-beginner实现日志
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-25 21:39:38" itemprop="dateCreated datePublished" datetime="2023-01-25T21:39:38+08:00">2023-01-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-19 22:28:08" itemprop="dateModified" datetime="2024-03-19T22:28:08+08:00">2024-03-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>这是复旦大学<a
+target="_blank" rel="noopener" href="https://github.com/FudanNLP/nlp-beginner">nlp-beginner</a>项目的实现日志</em></p>
+<span id="more"></span>
+<hr />
+<h2 id="lab-1">Lab 1</h2>
+<p><em>test accuracy here actually means validation accuracy</em></p>
+<p>An MLP for text classification implementation from scratch only by
+NumPy is required in Lab 1</p>
+<p>training plot:</p>
+<p><img src="train50.png" /></p>
+<p>The accuracy on the corresponding <a
+target="_blank" rel="noopener" href="https://www.kaggle.com/competitions/sentiment-analysis-on-movie-reviews">Kaggle
+comepetition</a> is bad, just 19%</p>
+<h2 id="lab-2">Lab 2</h2>
+<p>A Pytorch version of Lab 1 with CNN and RNN classifier is required in
+Lab 2, whose initialization shall be random or by pre-trained GLoVe
+vectors. Here are some results</p>
+<p><em>test accuracy here actually means validation accuracy</em></p>
+<p><em>epoch for all experiments is 50</em></p>
+<p><strong>CNN train plot</strong></p>
+<ul>
+<li>TextCNN(<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1408.5882">paper</a>) with
+GLoVe 50d</li>
+</ul>
+<p><em>learning rate 0.001</em></p>
+<p><em>dropout 0.5</em></p>
+<p><em>batch size 128</em></p>
+<p><em>weight decay 0.001</em></p>
+<p><img src="cnn_50.png" /></p>
+<p><strong>RNN training plots</strong></p>
+<ol type="1">
+<li>GRU with GLoVe 50d</li>
+</ol>
+<p><em>learning rate 0.001</em></p>
+<p><em>batch size 64</em></p>
+<p><em>weight decay 1e-5</em></p>
+<p><img src="rnn_gru_50.png" /></p>
+<p>The best performance on the same competition in Lab 1 reached
+60.3%</p>
+<ol start="2" type="1">
+<li>LSTM with GLoVe 100d</li>
+</ol>
+<p><em>learning rate 0.001</em></p>
+<p><em>batch size 64</em></p>
+<p><em>weight decay 1e-5</em></p>
+<p><img src="rnn_lstm_100.png" /></p>
+<p>but the best performance is 59.2%, a little bit worse than GRU</p>
+<p>Further experiments are needed to find out whether this is because of
+the change of NN structur or the dimension of word vector</p>
+<ol start="3" type="1">
+<li>GRU with GLoVe 100d</li>
+</ol>
+<p><em>learning rate 0.001</em></p>
+<p><em>batch size 64</em></p>
+<p><em>weight decay 1e-5</em></p>
+<p><img src="rnn_gru_100.png" /></p>
+<p>The best performance on the same competition in Lab 1 reached
+61.3%</p>
+<p><em>By comparing experiment 2 and 3, it can be concluded that it is
+the structure of the network that influences the result.</em></p>
+<p><em>A possible reason for this is the parameters in the hidden layer
+of LSTM(a tuple of 2 tensors) is more than that in GRU(1 tensor). So it
+is prone to overfit.</em></p>
+<ol start="4" type="1">
+<li>Bi-GRU with GLoVe 100d</li>
+</ol>
+<p><em>learning rate 0.001</em></p>
+<p><em>batch size 64</em></p>
+<p><em>weight decay 1e-4</em></p>
+<p><img src="rnn_bigru_100.png" /></p>
+<p>The best performance on the same competition in Lab 1 is 60.7%</p>
+<p><em>I do not know why Bi-GRU or Bi-LSTM won't improve performance.
+Maybe there is better hyper-parameter combinations.</em></p>
+<p><em>Besides I also tried gradient clipping but it will do bad to this
+lab because the amount of training data is not large(at 10^5 level).
+Gradient boom won't appear.</em></p>
+<p><em>This is the end of lab 1 &amp; 2</em></p>
+<h2 id="lab-3">Lab 3</h2>
+<p>This is an implementation of the ESIM model of <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/1609.06038">this paper</a></p>
+<p>Hyper parameters:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">256</span></span><br><span class="line">embed_size = <span class="number">100</span></span><br><span class="line">sentence_length = <span class="number">50</span></span><br><span class="line">hidden_size_lstm = <span class="number">128</span></span><br><span class="line">hidden_size_dense = <span class="number">128</span></span><br><span class="line">lr = <span class="number">4e-4</span></span><br><span class="line">epoch = <span class="number">20</span></span><br><span class="line">dropout = <span class="number">0.5</span></span><br></pre></td></tr></table></figure>
+<p>I trained the model 30 epochs using SNLI dataset. But when tested, it
+seems 10 epochs is enough, more epochs could cause overfit.</p>
+<p>The loss curve:</p>
+<p><img src="30_loss.png" /></p>
+<p>The accuracy &amp; loss curve:</p>
+<p><img src="30_acc.png" /></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Epoch</th>
+<th style="text-align: center;">Acc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0(Randomly initialized)</td>
+<td style="text-align: center;">32.88 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">85.50 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">83.69 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">83.16 %</td>
+</tr>
+</tbody>
+</table>
+<p>Customized test is available in <code>prediction.py</code>, You can
+play with this.</p>
+<p><em>Concatenating information produced by LSTM is useful. Attention
+is strong</em></p>
+<p><em>This is the end of lab 3</em></p>
+<hr />
+<h2 id="lab-4">Lab 4</h2>
+<p><strong>A note for viterbi algorithm in CRF</strong></p>
+<p><em>Viterbi algorithm</em><sup>[1]</sup></p>
+<p>This is actually an <em>abstract</em> method for all
+<strong>"shortest"-path problems</strong> of <em>layered &amp;
+structured</em> graph.</p>
+<p>The algorithm uses DP to find the 'shortest' path from the start to
+the end.</p>
+<p>consider this graph:</p>
+<p><img src="crf-1.PNG" /></p>
+<p>If we want to get the shortest path length from S to E, we need
+to:</p>
+<ul>
+<li><p>calculate <strong>all</strong> the distances from S to layer
+A</p></li>
+<li><p>calculate and reserve the <strong>shortest</strong> paths and
+their start points(the precedent array) from layer A to layer B (i.e
+A-&gt;B{1,2,3,4}) <strong>Just 4 paths reserved, which accelerates the
+algorithm compared with brute-force</strong></p></li>
+<li><p>repeat the step from layer B to C</p></li>
+<li><p>choose the shortest path from layer C to E</p></li>
+<li><p>backtrack according to the precedent array to S, record every
+point</p></li>
+<li><p>the reversion of the record in the previous step is the shortest
+path from S to E</p></li>
+</ul>
+<p>These are basic steps of viterbi algorithm</p>
+<p>All models using this algorithm just differs on the definition of
+<strong>path length</strong></p>
+<ol start="2" type="1">
+<li><em>CRF &amp; others</em><sup>[2] [3]</sup></li>
+</ol>
+<p>Essentially, the layers in part 1 are instantialized as <strong>all
+the possible states</strong> in HMM, Structured Perceptron and CRF as
+shown below:</p>
+<p><img src="crf-2.PNG" /></p>
+<p>We just need to calculate the <strong>maximum</strong> path length of
+the graph with a customized <em>score function</em></p>
+<ol start="3" type="1">
+<li><em>Viterbi algorithm in CRF</em><sup>[2]</sup></li>
+</ol>
+<p>[1] https://zhuanlan.zhihu.com/p/40208596</p>
+<p>[2] Introduction to Natrual Language Processing, Chapters 5 and 6,
+Han He, 2019</p>
+<p>[3] https://zhuanlan.zhihu.com/p/148813079</p>
+<hr />
+<h2 id="lab-5">Lab 5</h2>
+<ol type="1">
+<li><p>花丛狭路尘 间黯将暮云 间月色明如 素鸳鸯池上 两两飞凤凰 楼下双双度
+物色正如此 佳期那不顾</p></li>
+<li><p>明月夜玉殿莓苔 青宫女晚知曙祠 官朝见星空梁簇 画戟阴井敲铜瓶
+中使日夜继惟王 心不宁岂徒恤备 享尚谓求无形孝 理敦国政神凝推</p></li>
+</ol>
+<p><em>hyper-parameters</em></p>
+<p><code>batch_size = 64</code></p>
+<p><code>num_steps = 10 or 14</code></p>
+<p><code>embedding_size = 100</code></p>
+<p><code>hidden_size = 256</code></p>
+<p><code>lr = 0.001</code></p>
+<p>There are poems generated by the GRU model. Somehow nonsense.(Copying
+the dataset)</p>
+<p>I tried the time steps of 10(for 5-charactered-sentence poem) and
+14(for 7-charactered-sentence poem)</p>
+<p>The perplexity of time step 10:</p>
+<p><img src="100_gru_10.png" /></p>
+<p>The perplexity of time step 14:</p>
+<p><img src="100_gru_14.png" /></p>
+<p>I think it is better to use seq2seq. I will try if time allows.</p>
+<p><em>This is the end of lab 5</em></p>
+<p><em>实现代码在<a
+target="_blank" rel="noopener" href="https://github.com/SchweitzerGAO/nlp-beginner-impl">此处</a></em>/<em>code
+<a
+target="_blank" rel="noopener" href="https://github.com/SchweitzerGAO/nlp-beginner-impl">here</a></em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NLP/" rel="tag"># NLP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/26/acwing-algorithm-note/" rel="next" title="acwing-算法基础课笔记">
+                  acwing-算法基础课笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charles Gao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

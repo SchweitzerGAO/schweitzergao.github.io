@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"schweitzergao.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是大模型实战营第三次课的作业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型实战营第三次课作业">
+<meta property="og:url" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/index.html">
+<meta property="og:site_name" content="All embarks, few finishes">
+<meta property="og:description" content="这是大模型实战营第三次课的作业">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/1.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/2.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/3.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/4.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/5.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/7.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/8.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/9.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/10.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/11.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/6.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/12.PNG">
+<meta property="article:published_time" content="2024-01-08T02:33:31.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:28:08.135Z">
+<meta property="article:author" content="Charles Gao">
+<meta property="article:tag" content="大模型实战营">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/1.PNG">
+
+
+<link rel="canonical" href="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/","path":"2024/01/08/mmtutorial-3-assignment/","title":"大模型实战营第三次课作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>大模型实战营第三次课作业 | All embarks, few finishes</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">All embarks, few finishes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Charles Gao's Site</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A"><span class="nav-number">1.</span> <span class="nav-text">基础作业</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E4%BD%9C%E4%B8%9A"><span class="nav-number">2.</span> <span class="nav-text">进阶作业</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charles Gao</p>
+  <div class="site-description" itemprop="description">Schweitzer Gao</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://schweitzergao.github.io/2024/01/08/mmtutorial-3-assignment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charles Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All embarks, few finishes">
+      <meta itemprop="description" content="Schweitzer Gao">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="大模型实战营第三次课作业 | All embarks, few finishes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大模型实战营第三次课作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-08 10:33:31" itemprop="dateCreated datePublished" datetime="2024-01-08T10:33:31+08:00">2024-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-19 22:28:08" itemprop="dateModified" datetime="2024-03-19T22:28:08+08:00">2024-03-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>这是<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sT4y1p71V/?vd_source=96a5e3c8d3ee54a5b89d246a66d277e3">大模型实战营第三次课</a>的作业</em></p>
+<span id="more"></span>
+<h2 id="基础作业">基础作业</h2>
+<p>按照<a
+target="_blank" rel="noopener" href="https://github.com/InternLM/tutorial/blob/main/langchain/readme.md">这个文档</a>一步一步来做，得到如下结果</p>
+<ul>
+<li>仅对前10个文档进行向量化</li>
+</ul>
+<ol type="1">
+<li>回答正确</li>
+</ol>
+<p><img src="1.PNG" /></p>
+<p><img src="2.PNG" /></p>
+<ol start="2" type="1">
+<li>幻觉</li>
+</ol>
+<p><img src="3.PNG" /></p>
+<ol start="3" type="1">
+<li>知识库白连接了……</li>
+</ol>
+<p><img src="4.PNG" /></p>
+<ol start="4" type="1">
+<li>意义不明的回答</li>
+</ol>
+<p><img src="5.PNG" /></p>
+<ul>
+<li>对全部文档进行向量化</li>
+</ul>
+<ol type="1">
+<li>回答正确</li>
+</ol>
+<p><img src="7.PNG" /></p>
+<ol start="2" type="1">
+<li>幻觉似乎减轻了</li>
+</ol>
+<p><img src="8.PNG" /></p>
+<ol start="3" type="1">
+<li>又白连接了……</li>
+</ol>
+<p><img src="9.PNG" /></p>
+<p>但如果一开始问他这些问题，可以回答正确</p>
+<p><img src="10.PNG" /></p>
+<p><img src="11.PNG" /></p>
+<ol start="4" type="1">
+<li>回答正确！</li>
+</ol>
+<p><img src="6.PNG" /></p>
+<ul>
+<li>不接入知识库</li>
+</ul>
+<p>全部回答错误且幻觉现象严重</p>
+<h2 id="进阶作业">进阶作业</h2>
+<ol type="1">
+<li>知识库语料</li>
+</ol>
+<p>我将复旦大学桂韬，张奇，黄萱菁等所著<a
+target="_blank" rel="noopener" href="https://intro-nlp.github.io/chapter/Introduction_To_NLP.pdf">《自然语言处理导论》</a>以及<a
+target="_blank" rel="noopener" href="https://intro-llm.github.io/chapter/LLM-TAP.pdf">《大规模语言模型：从理论到实践》</a>作为专业知识库语料。</p>
+<ol start="2" type="1">
+<li>构建向量数据库</li>
+</ol>
+<p>为了读入pdf文件，我将demo <code>create_db.py</code>中</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_text</span>(<span class="params">dir_path</span>):</span><br><span class="line">    <span class="comment"># args：dir_path，目标文件夹路径</span></span><br><span class="line">    <span class="comment"># 首先调用上文定义的函数得到目标文件路径列表</span></span><br><span class="line">    file_lst = get_files(dir_path)</span><br><span class="line">    <span class="comment"># docs 存放加载之后的纯文本对象</span></span><br><span class="line">    docs = []</span><br><span class="line">    <span class="comment"># 遍历所有目标文件</span></span><br><span class="line">    <span class="keyword">for</span> one_file <span class="keyword">in</span> tqdm(file_lst):</span><br><span class="line">        file_type = one_file.split(<span class="string">&#x27;.&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> file_type == <span class="string">&#x27;md&#x27;</span>:</span><br><span class="line">            loader = UnstructuredMarkdownLoader(one_file)</span><br><span class="line">        <span class="keyword">elif</span> file_type == <span class="string">&#x27;txt&#x27;</span>:</span><br><span class="line">            loader = UnstructuredFileLoader(one_file)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 如果是不符合条件的文件，直接跳过</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        docs.extend(loader.load())</span><br><span class="line">    <span class="keyword">return</span> docs</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_text</span>(<span class="params">file_path</span>): <span class="comment"># 文件数量不多，故可直接提供路径信息，无需os.walk</span></span><br><span class="line">    <span class="comment"># args：dir_path，目标文件夹路径</span></span><br><span class="line">    <span class="comment"># # 首先调用上文定义的函数得到目标文件路径列表</span></span><br><span class="line">    <span class="comment"># file_lst = get_files(dir_path)</span></span><br><span class="line">    <span class="comment"># docs 存放加载之后的纯文本对象</span></span><br><span class="line">    docs = []</span><br><span class="line">    <span class="comment"># 遍历所有目标文件</span></span><br><span class="line">    <span class="keyword">for</span> one_file <span class="keyword">in</span> tqdm(file_path):</span><br><span class="line">        file_type = one_file.split(<span class="string">&#x27;.&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> file_type == <span class="string">&#x27;md&#x27;</span>:</span><br><span class="line">            loader = UnstructuredMarkdownLoader(one_file)</span><br><span class="line">        <span class="keyword">elif</span> file_type == <span class="string">&#x27;txt&#x27;</span>:</span><br><span class="line">            loader = UnstructuredFileLoader(one_file)</span><br><span class="line">        <span class="keyword">elif</span> file_type == <span class="string">&#x27;pdf&#x27;</span>:</span><br><span class="line">            loader = PyPDFLoader(one_file)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        docs.extend(loader.load())</span><br><span class="line">    <span class="keyword">return</span> docs</span><br></pre></td></tr></table></figure>
+<p>增加了<code>PyPDFLoader</code></p>
+<blockquote>
+<p>使用<code>PyPDFLoader</code>之前需要运行<code>pip install pypdf</code>安装依赖。</p>
+</blockquote>
+<p>同时，为了提高回答的正确性，我将demo中的<code>RecursiveCharacterTextSplitter</code>改为了<code>TokenTextSplitter</code>：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text_splitter = TokenTextSplitter(</span><br><span class="line">chunk_size=<span class="number">700</span>, </span><br><span class="line">chunk_overlap=<span class="number">200</span>, </span><br><span class="line">allowed_special=&#123;<span class="string">&#x27;&lt;|endoftext|&gt;&#x27;</span>&#125;)  <span class="comment"># PDF文件中的特殊词元&lt;|endoftext|&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>TokenTextSplitter</code>使用了BPE对文本进行tokenization，有助于按词义检索。</p>
+<blockquote>
+<p>使用<code>TokenTextSplitter</code>之前需要运行<code>pip install tiktoken</code>安装依赖。</p>
+</blockquote>
+<ol start="3" type="1">
+<li>接入LLM</li>
+</ol>
+<p>这部分与demo相同，不再赘述</p>
+<ol start="4" type="1">
+<li>构建检索问答链并在开发机运行</li>
+</ol>
+<ul>
+<li>使用基于模板的问答链</li>
+</ul>
+<p>这是demo中的方法，代码未作改动，不再赘述。</p>
+<p>基于模板的问答链本质是将上下文，用户给定的输入以及可能的检索结果嵌入一个给定的模板中，将该模板作为输入给LLM。这种方法仅调用LLM一次，但检索正确性较低。以下是几个问答示例：</p>
+<ol type="1">
+<li></li>
+</ol>
+<blockquote>
+<p><strong>问</strong>：根据你的知识库回答，分布式训练有什么并行策略</p>
+<p><strong>答</strong>：基于您提供的问题和上下文，我可以尝试回答您的问题
+基于分布式训练，并行策略包括但不限于以下几个方面:
+1.数据并行策略:将训练教据分割成多个批次，分配给不同的计算节点进行计算，每人计算节点计算一个批次的数据，然后将计算结果返回给主节点。
+2.模型并行策略:将模型分成多个部分，每个部分分配给不同的计算节点进行训练，每个计算节点只训练其中的一部分模型。
+3.混合并行策略:
+数据和模型并行策略的结合，在单个计算节点上同时使用数据和模型的部分进行计算。
+以上三种策略都可以有效地利用计算资源的并行性，提高训练效率，不的场景和任务可能会选择不同的策略，具体取决于数据的规模、模型的复杂度和计算资源的可用性等因素。</p>
+</blockquote>
+<p>2）</p>
+<blockquote>
+<p><strong>问</strong>：根据你的知识库回答，语义表示有多少种可用的方法?</p>
+<p><strong>答</strong>：以下是根据提供的上下文信息和新的上下文信息更新后的答案:语义表示有许多可用的方法，包括但不限于词、助概为施事、受事咨、方位、工具格等语义深格，具体方法包括但不限于实体鞋接、概念配、关系抽与分类、句法分析、组合模型训陈等。例如，对于“复旦大学所在城市的人口有多少?”这一问句，语义解析的具体过程如图12.28所示。</p>
+</blockquote>
+<p>3）</p>
+<blockquote>
+<p><strong>问</strong>：什么是预训练语言模型?</p>
+<p>答：基于Transformer的大规模预训练语言起成为了自然语言处理的新主流，具有通用和强大的自然语言表示能力，可以帮助学习词汇、语法和语义信息，使用预训练语言模型，在微调模型时，不需要了解特定的任务细节，只黑要使用具体任务的标注数据对预训练语言模型进行监督训练，就可以取得显著的性能提升，这类方法被称为预训练语言模型，目前，全球最大的语言模型
+GPT-3 拥有1750亿个参数。</p>
+</blockquote>
+<ul>
+<li>使用基于Refine的问答链</li>
+</ul>
+<p>Refine 文档链对于每一个文档会调用一次
+LLM，但有所改进的是，我们每次发送给 LLM
+的最终提示是一个序列，这个序列会将先前的响应与新数据结合在一起，并请求得到改进后的响应。因此，这是一种类似于
+RNN
+的概念，我们增强了上下文，从而解决信息分布在不同文档的问题。但这也造成检索时间较长的问题。测试时每次生成答案都需要20s以上。</p>
+<p>使用基于Refine的问答链还是会有以下问题：</p>
+<ul>
+<li>幻觉现象</li>
+</ul>
+<blockquote>
+<p><strong>问</strong>：好的，目前有哪些主流的预训练语言模型？</p>
+<p><strong>答</strong>：好的，以下是根据您的要求对原有回答的修订版：</p>
+<p>目前有许多主流的预训练语言模型，以下是其中的一些：</p>
+<ol type="1">
+<li>BERT (Bidirectional Encoder Representations from Transformers)</li>
+<li>GPT (Generative Pre-trained Transformer)</li>
+<li>RoBERTa (Robustly Optimized BERT Pretraining Approach)</li>
+<li>XLNet (eXtreme Multi-task Learning Network)</li>
+<li>BART (Bidirectional and Asynchronous Reranking Transformers)</li>
+<li>ALBERT (A Lite BERT)</li>
+<li>Transformer-XL (Long-Text CTR Transformer)</li>
+<li>GShard (Graph Neural Network-based Shared Distributed
+Transformers)</li>
+<li>Doc2Seq (Document-to-Sequence with Encoder Network)</li>
+<li>NavDeepLM (Natural Language Processing with Neural Networks)</li>
+<li>BigBERT (Bidirectional Encoder Representations from
+Transformers)</li>
+<li>T5 (Text-to-Text Transfer Transformer)</li>
+<li>ELMo (Embeddings from Language Models)</li>
+<li>ULMFiT (Universal Language Model Fine-tuning)</li>
+<li>MoCo (Multi-Instance Correlation for Text Generation)</li>
+<li>LJBERT (Language Models are Few-Shot Learners)</li>
+<li>KERMIT (Knowledge Enhanced Representation Model for Information
+Retrieval)</li>
+<li>Pix4LM (Pixel-to-Language with Language Modeling)</li>
+<li>CRNN (Cross-Transformer Recursive Neural Network)</li>
+<li>GPM (Graph Processing Method)</li>
+<li>NanoModel (Neural Network for Fine-tuning the Microstructure of
+Text)</li>
+<li>YAGO (Yet Another Good Ontology)</li>
+<li>OpenIE (Open Information Extraction)</li>
+<li>YAM (Yet Another Multilingual Model)</li>
+<li>RACE (Recursive Neural Context Architecture for Sentencing)</li>
+<li>DeepSmooth (Deep Models with Smoothed Poissonization for Language
+Generation)</li>
+<li>XLM (Cross-lingual Language Model)</li>
+<li>ULMFiT-Cross</li>
+<li>GPT-2 (Generative Pre-trained Transformer 2)</li>
+<li>GPT-3 (Generative Pre-trained Transformer 3)</li>
+<li>GPT-4 (Generative Pre-trained Transformer 4)</li>
+<li>GPT-5 (Generative Pre-trained Transformer 5)</li>
+<li>GPT-6 (Generative Pre-trained Transformer 6)</li>
+<li>GPT-7 (Generative Pre-trained Transformer 7)</li>
+<li>GPT-8 (Generative Pre-trained Transformer 8)</li>
+<li>GPT-9 (Generative Pre-trained Transformer 9)</li>
+<li>GPT-10 (Generative Pre-trained Transformer 10)</li>
+<li>GPT-11 (Generative Pre-trained Transformer 11)</li>
+<li>GPT-12 (Generative Pre-tr</li>
+</ol>
+</blockquote>
+<ul>
+<li>相近知识混淆（LoRA, Low Rank Adaptation 和LoRa, Long Range）</li>
+</ul>
+<blockquote>
+<p><strong>问</strong>：根据你的知识库回答，什么是LoRA?</p>
+<p><strong>答</strong>：LoRa是一种低功耗广域网（Long Range
+Wireless）的通信技术，它是一种基于无线电技术的无线通信技术，通常用于连接低功耗设备并与物联网应用进行通信，以实现远程监控、远程控制等功能。LoRa技术的特点是低功耗、低成本、长距离、低速率等，因此在许多应用场景中都有很好的表现，例如智能家居、智能农业、智能交通等。</p>
+<p><strong>问</strong>：什么是LOW-RANK ADAPTATION</p>
+<p><strong>答</strong>：LOW-RANK ADAPTATION (低秩适应)
+是一种机器学习技术，它通过在模型训练过程中利用低秩性质来优化模型性能。其具体实现方式是在模型训练过程中加入一些限制，使得模型的参数矩阵近似于一个低秩矩阵。这种方法可以帮助减少计算量，提高模型性能，同时保留原有的模型效果。在实际应用中，LOW-RANK
+ADAPTATION
+可以应用于各种机器学习任务中，例如文本生成、图像处理、语音识别等。</p>
+</blockquote>
+<ol start="5" type="1">
+<li>OpenXLab部署</li>
+</ol>
+<p>按照<a
+target="_blank" rel="noopener" href="https://openxlab.org.cn/docs/apps/Gradio%E5%BA%94%E7%94%A8.html">此文档</a>引导进行上述应用的部署，部署成功截图：</p>
+<p><img src="12.PNG" /></p>
+<p>点击<a
+target="_blank" rel="noopener" href="https://openxlab.org.cn/apps/detail/CharlesGao/langchain-nlp-llm-expert">此处</a>访问。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AE%9E%E6%88%98%E8%90%A5/" rel="tag"># 大模型实战营</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/06/mmtutorial-2-assignment/" rel="prev" title="大模型实战营第二次课作业">
+                  <i class="fa fa-chevron-left"></i> 大模型实战营第二次课作业
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/01/08/mmtutorial-3-note/" rel="next" title="大模型实战营第三次课笔记">
+                  大模型实战营第三次课笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charles Gao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

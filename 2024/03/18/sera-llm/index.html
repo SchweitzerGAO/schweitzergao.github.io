@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"schweitzergao.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是SERA-LLM的实现日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sera-llm 实现日志">
+<meta property="og:url" content="http://schweitzergao.github.io/2024/03/18/sera-llm/index.html">
+<meta property="og:site_name" content="All embarks, few finishes">
+<meta property="og:description" content="这是SERA-LLM的实现日志">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-18T03:21:56.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:28:08.261Z">
+<meta property="article:author" content="Charles Gao">
+<meta property="article:tag" content="RAG">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://schweitzergao.github.io/2024/03/18/sera-llm/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://schweitzergao.github.io/2024/03/18/sera-llm/","path":"2024/03/18/sera-llm/","title":"sera-llm 实现日志"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>sera-llm 实现日志 | All embarks, few finishes</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">All embarks, few finishes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Charles Gao's Site</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#day-1-description-as-document-with-chatgpt-webui"><span class="nav-number">1.</span> <span class="nav-text">Day 1:
+Description-as-Document with ChatGPT WebUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-2-description-as-document-with-chatgpt-api"><span class="nav-number">2.</span> <span class="nav-text">Day 2:
+Description-as-Document with ChatGPT API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-3-description-as-document-with-chatgpt-apievaluation"><span class="nav-number">3.</span> <span class="nav-text">Day 3:
+Description-as-Document with ChatGPT API(Evaluation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-4-periodical-summary"><span class="nav-number">4.</span> <span class="nav-text">Day 4: Periodical Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-5-add-duckduckgo-as-a-search-engine"><span class="nav-number">5.</span> <span class="nav-text">Day 5: Add DuckDuckGo
+as a Search Engine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-6-implement-rewrite-retrieve-readr3-query-rewrite-schema"><span class="nav-number">6.</span> <span class="nav-text">Day 6:
+Implement Rewrite-Retrieve-Read(R3) Query Rewrite Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-7-implement-page-as-ducument-with-chatgpt-api"><span class="nav-number">7.</span> <span class="nav-text">Day 7:
+Implement Page-as-Ducument with ChatGPT API</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charles Gao</p>
+  <div class="site-description" itemprop="description">Schweitzer Gao</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://schweitzergao.github.io/2024/03/18/sera-llm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charles Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All embarks, few finishes">
+      <meta itemprop="description" content="Schweitzer Gao">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="sera-llm 实现日志 | All embarks, few finishes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sera-llm 实现日志
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-18 11:21:56" itemprop="dateCreated datePublished" datetime="2024-03-18T11:21:56+08:00">2024-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-19 22:28:08" itemprop="dateModified" datetime="2024-03-19T22:28:08+08:00">2024-03-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>这是<a
+target="_blank" rel="noopener" href="https://github.com/SchweitzerGAO/SERA-LLM">SERA-LLM</a>的实现日志</em></p>
+<span id="more"></span>
+<p><em>Search Engine Retrieval Augmented Large Language Model</em></p>
+<blockquote>
+<p>Intern working log below</p>
+</blockquote>
+<h2 id="day-1-description-as-document-with-chatgpt-webui">Day 1:
+Description-as-Document with ChatGPT WebUI</h2>
+<p>Description-as-Document is a method which deems the
+<code>description</code> field returned</p>
+<ol type="1">
+<li><p>Implemented description-as-document retrieval from
+google</p></li>
+<li><p>Tested prompts for ChatGPT for prompt deep-processing and
+prompt-RAG For question processing, a tested system input for ChatGPT
+is:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">         你是一个诚实的问答助手，如果你认为你能直接回答以下问题，则按以下格式输出：“答案: 该问题的答案”，否则，请针对以下问题生成&#123;k&#125;个更加深入的问题并直接输出。</span></span><br><span class="line"><span class="string">         注意：</span></span><br><span class="line"><span class="string">         1. 总是生成易于进行搜索引擎检索的问题。例如，不要生成类似“您……”或“你……”的问题，</span></span><br><span class="line"><span class="string">         2. 请必须以JSON列表的形式返回问题</span></span><br><span class="line"><span class="string">         问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">     &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The model is more prone to generate questions than answer it directly
+although it knows the answer For in-prompt SERAG (<em>Search Engine
+Retrieval Augmented Generation</em>), a tested prompt for ChatGPT
+is:</p></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            你是一个诚实的问答助手，以下是用户的问题以及可能有用的文档，文档以 “序号：内容” 的格式给出：</span></span><br><span class="line"><span class="string">            问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">            文档：</span></span><br><span class="line"><span class="string">            ...</span></span><br><span class="line"><span class="string">            &#123;docs&#125;</span></span><br><span class="line"><span class="string">            ...</span></span><br><span class="line"><span class="string">            请逐步深入思考问题与文档的关系，并在思考的过程中注意：</span></span><br><span class="line"><span class="string">            1. 如果你不能直接回答这个问题，则参考文档尝试回答</span></span><br><span class="line"><span class="string">            2. 如果你参考文档回答了这个问题，请把参考文档的序号以Markdown上标的形式标注在相关回答之后</span></span><br><span class="line"><span class="string">            3. 如果你认为参考文档无法帮助你回答这个问题，请回答“我还不了解这个问题的答案”</span></span><br><span class="line"><span class="string">            4. 不要输出与问题不相关的文字</span></span><br><span class="line"><span class="string">            尝试回答这个问题</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>However, this do not always work properly. ChatGPT tend to drop into
+hallucination than admit that it doesn't know this when the documents is
+irrelavent. Among these malfunctions there is <a
+target="_blank" rel="noopener" href="https://chat.openai.com/share/9c26faf9-4ad7-4430-ae03-2ca15833c628">a
+surprising one</a> which shows in multi-turn dialogue ChatGPT
+<strong>can admit its incapability in answering the question only after
+the 1st turn of dialogue</strong></p>
+<h2 id="day-2-description-as-document-with-chatgpt-api">Day 2:
+Description-as-Document with ChatGPT API</h2>
+<ol type="1">
+<li><p>Splitted and tuned the prompt, taking the system prompt and the
+user input apart For question processing prompt:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">process_questions_system_input = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">         你是一个诚实的问答助手，如果你认为你能直接回答以下问题，则按以下格式输出：“答案: 该问题的答案”，否则，请针对以下问题生成&#123;k&#125;个更加深入的问题并以“问题：问题内容”输出。</span></span><br><span class="line"><span class="string">         注意：</span></span><br><span class="line"><span class="string">         1. 总是生成易于进行搜索引擎检索的问题。例如，不要生成类似“您……”或“你……”的问题，</span></span><br><span class="line"><span class="string">         2. 总是以“问题：问题内容”输出生成的问题，不要任何附加输出</span></span><br><span class="line"><span class="string">     &quot;&quot;&quot;</span></span><br><span class="line">process_questions_user_input = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">             问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">     &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>When calling the gpt-turbo-3.5 API:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">response = model.chat.completions.create(</span><br><span class="line">             model=<span class="string">&quot;gpt-3.5-turbo&quot;</span>,</span><br><span class="line">             messages=[</span><br><span class="line">             &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: self._final_system_prompt&#125;,</span><br><span class="line">             &#123;<span class="string">&#x27;role&#x27;</span>: <span class="string">&#x27;user&#x27;</span>, <span class="string">&quot;content&quot;</span>: self._final_user_prompt&#125;</span><br><span class="line">         ]</span><br><span class="line">         )</span><br><span class="line">   output = response.choices[<span class="number">0</span>].message.content</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>For final prompt input into ChatGPT:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">final_system_prompt = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            你是一个诚实的问答助手，以下是用户的问题以及可能有用的文档，文档以 “序号：内容” 的格式给出：</span></span><br><span class="line"><span class="string">            请逐步深入思考问题与文档的关系，并在思考的过程中注意：</span></span><br><span class="line"><span class="string">            1. 如果你不能直接回答这个问题，则参考文档尝试回答</span></span><br><span class="line"><span class="string">            2. 如果你参考文档回答了这个问题，请把参考文档的序号标注在相关回答之后</span></span><br><span class="line"><span class="string">            3. 如果你认为参考文档无法帮助你回答这个问题，请回答“我还不了解这个问题的答案”</span></span><br><span class="line"><span class="string">            4. 不要输出与问题不相关的文字</span></span><br><span class="line"><span class="string">            尝试回答这个问题</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">final_user_prompt = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">                可能有用的文档</span></span><br><span class="line"><span class="string">                ...</span></span><br><span class="line"><span class="string">                &#123;docs&#125;</span></span><br><span class="line"><span class="string">                ...</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The API call is alike with question processing stage. 2. Added
+fallback in case that the LLM cannot proceed the question correctly</p>
+<p>There are cases that ChatGPT cannot process the question in a correct
+format. To handle this, I added a fallback schema which returns the
+original prompt once ChatGPT cannot respond in the expected format.</p>
+<ol start="3" type="1">
+<li>Implemented in-prompt SERAG with ChatGPT API</li>
+</ol>
+<p>Comparison between raw ChatGPT and ChatGPT with SERAG-question is in
+<code>./demos/chatgpt/chatgpt-desc-hyqr-*.txt</code></p>
+<h2 id="day-3-description-as-document-with-chatgpt-apievaluation">Day 3:
+Description-as-Document with ChatGPT API(Evaluation)</h2>
+<ol type="1">
+<li><p>(Update) Implemented the function that process the question by
+keywords instead of by deeper questions Comparison between raw ChatGPT
+and ChatGPT with SERAG-keyword is in
+<code>./demos/chatgpt/chatgpt-desc-hykr-*.txt</code></p></li>
+<li><p>Evaluated SERAG with ChatGPT on <a
+target="_blank" rel="noopener" href="https://huggingface.co/datasets/hotpot_qa">hotpot_qa</a></p></li>
+</ol>
+<p>F1-score:</p>
+<ul>
+<li><p>With RAG(documents are from hotpot-qa dataset): 0.519</p></li>
+<li><p>With SERAG-keyword: 0.457</p></li>
+<li><p>with SERAG-question: 0.454</p></li>
+<li><p>with SERAG-R3: 0.435</p>
+<h2 id="day-4-periodical-summary">Day 4: Periodical Summary</h2>
+<p>Done: A naive SERAG system with Google Search and ChatGPT and its
+preliminary evaluation TODOs in the next period:</p></li>
+<li><p><input type="checkbox" checked="" />Add DuckDuckGo as a search
+engine</p></li>
+<li><p><input type="checkbox" checked="" />Implement
+Rewrite-Retrieve-Read(R3) query rewrite schema</p></li>
+<li><p><input type="checkbox" />Implement Page-as-Ducument with ChatGPT
+API</p></li>
+<li><p><input type="checkbox" />Evaluate with LLM feedback</p></li>
+</ul>
+<h2 id="day-5-add-duckduckgo-as-a-search-engine">Day 5: Add DuckDuckGo
+as a Search Engine</h2>
+<ol type="1">
+<li><p>Added DuckDuckGo as a search engine</p></li>
+<li><p>Evaluated SERAG-keyword &amp; SERAG-question with DDG as a
+backend</p></li>
+</ol>
+<h2
+id="day-6-implement-rewrite-retrieve-readr3-query-rewrite-schema">Day 6:
+Implement Rewrite-Retrieve-Read(R3) Query Rewrite Schema</h2>
+<ol type="1">
+<li>Implement &amp; Evaluated Rewrite-Retrieve-Read(R3) query rewrite
+schema Comparison between raw ChatGPT and ChatGPT with SERAG-R3 is in
+<code>./demos/chatgpt/chatgpt-desc-r3-*.txt</code></li>
+<li>Reformat the code gracefully</li>
+</ol>
+<h2 id="day-7-implement-page-as-ducument-with-chatgpt-api">Day 7:
+Implement Page-as-Ducument with ChatGPT API</h2>
+<blockquote>
+<p>TBD: May implement this after the interview</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RAG/" rel="tag"># RAG</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/18/mmtutorial-6-assignment/" rel="prev" title="大模型实战营第六次课作业">
+                  <i class="fa fa-chevron-left"></i> 大模型实战营第六次课作业
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charles Gao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

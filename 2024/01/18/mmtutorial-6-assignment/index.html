@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"schweitzergao.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是大模型实战营第六次课的作业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型实战营第六次课作业">
+<meta property="og:url" content="http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/index.html">
+<meta property="og:site_name" content="All embarks, few finishes">
+<meta property="og:description" content="这是大模型实战营第六次课的作业">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/1.PNG">
+<meta property="article:published_time" content="2024-01-18T02:40:44.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:28:08.231Z">
+<meta property="article:author" content="Charles Gao">
+<meta property="article:tag" content="大模型实战营">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/1.PNG">
+
+
+<link rel="canonical" href="http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/","path":"2024/01/18/mmtutorial-6-assignment/","title":"大模型实战营第六次课作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>大模型实战营第六次课作业 | All embarks, few finishes</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">All embarks, few finishes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Charles Gao's Site</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A"><span class="nav-number">1.</span> <span class="nav-text">基础作业</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E4%BD%9C%E4%B8%9A"><span class="nav-number">2.</span> <span class="nav-text">进阶作业</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charles Gao</p>
+  <div class="site-description" itemprop="description">Schweitzer Gao</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://schweitzergao.github.io/2024/01/18/mmtutorial-6-assignment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charles Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All embarks, few finishes">
+      <meta itemprop="description" content="Schweitzer Gao">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="大模型实战营第六次课作业 | All embarks, few finishes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大模型实战营第六次课作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-18 10:40:44" itemprop="dateCreated datePublished" datetime="2024-01-18T10:40:44+08:00">2024-01-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-19 22:28:08" itemprop="dateModified" datetime="2024-03-19T22:28:08+08:00">2024-03-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>这是<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Gg4y1U7uc/?spm_id_from=top_right_bar_window_dynamic.content.click&amp;vd_source=96a5e3c8d3ee54a5b89d246a66d277e3">大模型实战营第六次课</a>的作业</em></p>
+<span id="more"></span>
+<blockquote>
+<p>需要A100(1/4) * 2 的硬件环境才能进行CEval的全部测试</p>
+<p>两次测评均使用了ICL(In Context Learning)以期提升模型表现</p>
+</blockquote>
+<h2 id="基础作业">基础作业</h2>
+<p>按照<a
+target="_blank" rel="noopener" href="https://github.com/InternLM/tutorial/blob/main/opencompass/opencompass_tutorial.md#%E5%90%AF%E5%8A%A8%E8%AF%84%E6%B5%8B">教程</a>安装环境后，直接对InternLM2-chat-7b进行测试。</p>
+<p>首先创建<code>configs/eval_internlm2_chat_7b.py</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mmengine.config <span class="keyword">import</span> read_base</span><br><span class="line"><span class="keyword">from</span> opencompass.models <span class="keyword">import</span> HuggingFaceCausalLM</span><br><span class="line"><span class="keyword">from</span> opencompass.partitioners <span class="keyword">import</span> NaivePartitioner</span><br><span class="line"><span class="keyword">from</span> opencompass.runners <span class="keyword">import</span> LocalRunner</span><br><span class="line"><span class="keyword">from</span> opencompass.tasks <span class="keyword">import</span> OpenICLEvalTask, OpenICLInferTask</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> read_base():</span><br><span class="line">    <span class="comment"># choose a list of datasets</span></span><br><span class="line">    <span class="keyword">from</span> .datasets.ceval.ceval_gen_5f30c7 <span class="keyword">import</span> ceval_datasets</span><br><span class="line"></span><br><span class="line">datasets = [*ceval_datasets]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_meta_template = <span class="built_in">dict</span>(</span><br><span class="line">    <span class="built_in">round</span>=[</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;HUMAN&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]user\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>),</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;SYSTEM&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]system\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>),</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;BOT&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]assistant\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>, generate=<span class="literal">True</span>),</span><br><span class="line">    ],</span><br><span class="line">    eos_token_id=<span class="number">92542</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">models = [</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=HuggingFaceCausalLM,</span><br><span class="line">        abbr=<span class="string">&#x27;internlm2-chat-7b&#x27;</span>,</span><br><span class="line">        path=<span class="string">&quot;/share/model_repos/internlm2-chat-7b&quot;</span>,</span><br><span class="line">        tokenizer_path=<span class="string">&#x27;/share/model_repos/internlm2-chat-7b&#x27;</span>,</span><br><span class="line">        model_kwargs=<span class="built_in">dict</span>(</span><br><span class="line">            trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">            device_map=<span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">        ),</span><br><span class="line">        tokenizer_kwargs=<span class="built_in">dict</span>(</span><br><span class="line">            padding_side=<span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">            truncation_side=<span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">            trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">        ),</span><br><span class="line">        max_out_len=<span class="number">100</span>,</span><br><span class="line">        max_seq_len=<span class="number">2048</span>,</span><br><span class="line">        batch_size=<span class="number">8</span>,</span><br><span class="line">        meta_template=_meta_template,</span><br><span class="line">        run_cfg=<span class="built_in">dict</span>(num_gpus=<span class="number">1</span>, num_procs=<span class="number">1</span>),</span><br><span class="line">        end_str=<span class="string">&#x27;[UNUSED_TOKEN_145]&#x27;</span>,</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line">infer = <span class="built_in">dict</span>(</span><br><span class="line">    partitioner=<span class="built_in">dict</span>(<span class="built_in">type</span>=NaivePartitioner),</span><br><span class="line">    runner=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=LocalRunner,</span><br><span class="line">        max_num_workers=<span class="number">2</span>,</span><br><span class="line">        task=<span class="built_in">dict</span>(<span class="built_in">type</span>=OpenICLInferTask)),</span><br><span class="line">)</span><br><span class="line"><span class="built_in">eval</span> = <span class="built_in">dict</span>(</span><br><span class="line">    partitioner=<span class="built_in">dict</span>(<span class="built_in">type</span>=NaivePartitioner),</span><br><span class="line">    runner=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=LocalRunner,</span><br><span class="line">        max_num_workers=<span class="number">2</span>,</span><br><span class="line">        task=<span class="built_in">dict</span>(<span class="built_in">type</span>=OpenICLEvalTask)),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>之后运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python run.py configs/eval_internlm2_chat_7b.py --debug</span><br></pre></td></tr></table></figure>
+<p>测试结果如下</p>
+<table>
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>dataset</th>
+<th>version</th>
+<th>metric</th>
+<th>mode</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ceval-computer_network</td>
+<td>db9ce2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="even">
+<td>ceval-operating_system</td>
+<td>1c2571</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>68.42</td>
+</tr>
+<tr class="odd">
+<td>ceval-computer_architecture</td>
+<td>a74dad</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>57.14</td>
+</tr>
+<tr class="even">
+<td>ceval-college_programming</td>
+<td>4ca32a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>56.76</td>
+</tr>
+<tr class="odd">
+<td>ceval-college_physics</td>
+<td>963fa8</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.63</td>
+</tr>
+<tr class="even">
+<td>ceval-college_chemistry</td>
+<td>e78857</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>33.33</td>
+</tr>
+<tr class="odd">
+<td>ceval-advanced_mathematics</td>
+<td>ce03e2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>31.58</td>
+</tr>
+<tr class="even">
+<td>ceval-probability_and_statistics</td>
+<td>65e812</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>44.44</td>
+</tr>
+<tr class="odd">
+<td>ceval-discrete_mathematics</td>
+<td>e894ae</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>31.25</td>
+</tr>
+<tr class="even">
+<td>ceval-electrical_engineer</td>
+<td>ae42b9</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>40.54</td>
+</tr>
+<tr class="odd">
+<td>ceval-metrology_engineer</td>
+<td>ee34ea</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>70.83</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_mathematics</td>
+<td>1dc5bf</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>33.33</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_physics</td>
+<td>adf25f</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>42.11</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_chemistry</td>
+<td>2ed27f</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>47.37</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_biology</td>
+<td>8e2b9a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>36.84</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_mathematics</td>
+<td>bee8d5</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.63</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_biology</td>
+<td>86817c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>80.95</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_physics</td>
+<td>8accf6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>68.42</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_chemistry</td>
+<td>167a15</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>95.00</td>
+</tr>
+<tr class="even">
+<td>ceval-veterinary_medicine</td>
+<td>b4e08d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>43.48</td>
+</tr>
+<tr class="odd">
+<td>ceval-college_economics</td>
+<td>f3f4e6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>50.91</td>
+</tr>
+<tr class="even">
+<td>ceval-business_administration</td>
+<td>c1614e</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>57.58</td>
+</tr>
+<tr class="odd">
+<td>ceval-marxism</td>
+<td>cf874c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>84.21</td>
+</tr>
+<tr class="even">
+<td>ceval-mao_zedong_thought</td>
+<td>51c7a4</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-education_science</td>
+<td>591fee</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>72.41</td>
+</tr>
+<tr class="even">
+<td>ceval-teacher_qualification</td>
+<td>4e4ced</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>79.55</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_politics</td>
+<td>5c0de2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>89.47</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_geography</td>
+<td>865461</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_politics</td>
+<td>5be3e7</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>76.19</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_geography</td>
+<td>8a63be</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-modern_chinese_history</td>
+<td>fc01af</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>78.26</td>
+</tr>
+<tr class="even">
+<td>ceval-ideological_and_moral_cultivation</td>
+<td>a2aa4a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>89.47</td>
+</tr>
+<tr class="odd">
+<td>ceval-logic</td>
+<td>f5b022</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>54.55</td>
+</tr>
+<tr class="even">
+<td>ceval-law</td>
+<td>a110a1</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>45.83</td>
+</tr>
+<tr class="odd">
+<td>ceval-chinese_language_and_literature</td>
+<td>0f8b68</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>56.52</td>
+</tr>
+<tr class="even">
+<td>ceval-art_studies</td>
+<td>2a1300</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>66.67</td>
+</tr>
+<tr class="odd">
+<td>ceval-professional_tour_guide</td>
+<td>4e673e</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>82.76</td>
+</tr>
+<tr class="even">
+<td>ceval-legal_professional</td>
+<td>ce8787</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.17</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_chinese</td>
+<td>315705</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_history</td>
+<td>7eb30a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_history</td>
+<td>48ab4a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>86.36</td>
+</tr>
+<tr class="even">
+<td>ceval-civil_servant</td>
+<td>87d061</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.83</td>
+</tr>
+<tr class="odd">
+<td>ceval-sports_science</td>
+<td>70f27b</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>78.95</td>
+</tr>
+<tr class="even">
+<td>ceval-plant_protection</td>
+<td>8941f9</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>77.27</td>
+</tr>
+<tr class="odd">
+<td>ceval-basic_medicine</td>
+<td>c409d6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="even">
+<td>ceval-clinical_medicine</td>
+<td>49e82d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>54.55</td>
+</tr>
+<tr class="odd">
+<td>ceval-urban_and_rural_planner</td>
+<td>95b885</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>69.57</td>
+</tr>
+<tr class="even">
+<td>ceval-accountant</td>
+<td>002837</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>48.98</td>
+</tr>
+<tr class="odd">
+<td>ceval-fire_engineer</td>
+<td>bc23f5</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>54.84</td>
+</tr>
+<tr class="even">
+<td>ceval-environmental_impact_assessment_engineer</td>
+<td>c64e2d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>58.06</td>
+</tr>
+<tr class="odd">
+<td>ceval-tax_accountant</td>
+<td>3a5e3c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>44.90</td>
+</tr>
+<tr class="even">
+<td>ceval-physician</td>
+<td>6e277d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>57.14</td>
+</tr>
+<tr class="odd">
+<td>ceval-stem</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.51</td>
+</tr>
+<tr class="even">
+<td>ceval-social-science</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>72.35</td>
+</tr>
+<tr class="odd">
+<td>ceval-humanities</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>68.25</td>
+</tr>
+<tr class="even">
+<td>ceval-other</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>61.02</td>
+</tr>
+<tr class="odd">
+<td>ceval-hard</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>25.88</td>
+</tr>
+<tr class="even">
+<td>ceval</td>
+<td>-</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>61.46</td>
+</tr>
+</tbody>
+</table>
+<h2 id="进阶作业">进阶作业</h2>
+<p>选择采用TurboMind
+API的方式完成LMDeploy部署的InternLM2-Chat-7B在CEval上的测评</p>
+<p>按照opencompass评测LMDeploy模型的<a
+target="_blank" rel="noopener" href="https://opencompass-zh-cn.readthedocs.io/zh-cn/latest/advanced_guides/evaluation_turbomind.html">教程</a>，首先修改配置文件<code>configs/eval_internlm_chat_turbomind_api.py</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mmengine.config <span class="keyword">import</span> read_base</span><br><span class="line"><span class="keyword">from</span> opencompass.models.turbomind_api <span class="keyword">import</span> TurboMindAPIModel</span><br><span class="line"><span class="keyword">from</span> opencompass.partitioners <span class="keyword">import</span> NaivePartitioner</span><br><span class="line"><span class="keyword">from</span> opencompass.runners <span class="keyword">import</span> LocalRunner</span><br><span class="line"><span class="keyword">from</span> opencompass.tasks <span class="keyword">import</span> OpenICLEvalTask, OpenICLInferTask</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> read_base():</span><br><span class="line">    <span class="comment"># choose a list of datasets</span></span><br><span class="line">    <span class="keyword">from</span> .datasets.ceval.ceval_gen_5f30c7 <span class="keyword">import</span> ceval_datasets</span><br><span class="line">datasets = [*ceval_datasets]</span><br><span class="line">_meta_template = <span class="built_in">dict</span>(</span><br><span class="line">    <span class="built_in">round</span>=[</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;HUMAN&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]user\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>),</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;SYSTEM&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]system\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>),</span><br><span class="line">        <span class="built_in">dict</span>(role=<span class="string">&#x27;BOT&#x27;</span>, begin=<span class="string">&#x27;[UNUSED_TOKEN_146]assistant\n&#x27;</span>, end=<span class="string">&#x27;[UNUSED_TOKEN_145]\n&#x27;</span>, generate=<span class="literal">True</span>),</span><br><span class="line">    ],</span><br><span class="line">    eos_token_id=<span class="number">92542</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">models = [</span><br><span class="line">    <span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=TurboMindAPIModel,</span><br><span class="line">        abbr=<span class="string">&#x27;internlm2-chat-7b-turbomind&#x27;</span>,</span><br><span class="line">        path=<span class="string">&quot;/share/model_repos/internlm2-chat-7b&quot;</span>,</span><br><span class="line">        api_addr=<span class="string">&#x27;http://0.0.0.0:23333&#x27;</span>,</span><br><span class="line">        max_out_len=<span class="number">100</span>,</span><br><span class="line">        max_seq_len=<span class="number">2048</span>,</span><br><span class="line">        batch_size=<span class="number">8</span>,</span><br><span class="line">        meta_template=_meta_template,</span><br><span class="line">        run_cfg=<span class="built_in">dict</span>(num_gpus=<span class="number">1</span>, num_procs=<span class="number">1</span>),</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line">infer = <span class="built_in">dict</span>(</span><br><span class="line">    partitioner=<span class="built_in">dict</span>(<span class="built_in">type</span>=NaivePartitioner),</span><br><span class="line">    runner=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=LocalRunner,</span><br><span class="line">        max_num_workers=<span class="number">2</span>,</span><br><span class="line">        task=<span class="built_in">dict</span>(<span class="built_in">type</span>=OpenICLInferTask)),</span><br><span class="line">)</span><br><span class="line"><span class="built_in">eval</span> = <span class="built_in">dict</span>(</span><br><span class="line">    partitioner=<span class="built_in">dict</span>(<span class="built_in">type</span>=NaivePartitioner),</span><br><span class="line">    runner=<span class="built_in">dict</span>(</span><br><span class="line">        <span class="built_in">type</span>=LocalRunner,</span><br><span class="line">        max_num_workers=<span class="number">2</span>,</span><br><span class="line">        task=<span class="built_in">dict</span>(<span class="built_in">type</span>=OpenICLEvalTask)),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>再将InternLM2-Chat-7B
+转换为TurboMind格式并以API服务形式部署（使用LMDeploy 0.2.0）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lmdeploy convert internlm2-chat-7b  /root/share/model_repos/internlm2-chat-7b/</span><br><span class="line">lmdeploy serve api_server ./workspace --server-name 0.0.0.0 --server-port 23333 --max-batch-size 64 --tp 1</span><br></pre></td></tr></table></figure>
+<p>之后运行评测程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python run.py configs/eval_internlm_chat_turbomind_api.py -w outputs/turbomind/internlm2-chat-7b</span><br></pre></td></tr></table></figure>
+<p>测试截图</p>
+<p><img src="1.PNG" /></p>
+<p>测试结果如下</p>
+<table>
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 9%" />
+<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>dataset</th>
+<th>version</th>
+<th>metric</th>
+<th>mode</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ceval-computer_network</td>
+<td>db9ce2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="even">
+<td>ceval-operating_system</td>
+<td>1c2571</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>73.68</td>
+</tr>
+<tr class="odd">
+<td>ceval-computer_architecture</td>
+<td>a74dad</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>57.14</td>
+</tr>
+<tr class="even">
+<td>ceval-college_programming</td>
+<td>4ca32a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>59.46</td>
+</tr>
+<tr class="odd">
+<td>ceval-college_physics</td>
+<td>963fa8</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.63</td>
+</tr>
+<tr class="even">
+<td>ceval-college_chemistry</td>
+<td>e78857</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>33.33</td>
+</tr>
+<tr class="odd">
+<td>ceval-advanced_mathematics</td>
+<td>ce03e2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>26.32</td>
+</tr>
+<tr class="even">
+<td>ceval-probability_and_statistics</td>
+<td>65e812</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>38.89</td>
+</tr>
+<tr class="odd">
+<td>ceval-discrete_mathematics</td>
+<td>e894ae</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>31.25</td>
+</tr>
+<tr class="even">
+<td>ceval-electrical_engineer</td>
+<td>ae42b9</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>37.84</td>
+</tr>
+<tr class="odd">
+<td>ceval-metrology_engineer</td>
+<td>ee34ea</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>66.67</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_mathematics</td>
+<td>1dc5bf</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>38.89</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_physics</td>
+<td>adf25f</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>42.11</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_chemistry</td>
+<td>2ed27f</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>47.37</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_biology</td>
+<td>8e2b9a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>36.84</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_mathematics</td>
+<td>bee8d5</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>47.37</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_biology</td>
+<td>86817c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>80.95</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_physics</td>
+<td>8accf6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>68.42</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_chemistry</td>
+<td>167a15</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>95.00</td>
+</tr>
+<tr class="even">
+<td>ceval-veterinary_medicine</td>
+<td>b4e08d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>43.48</td>
+</tr>
+<tr class="odd">
+<td>ceval-college_economics</td>
+<td>f3f4e6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>49.09</td>
+</tr>
+<tr class="even">
+<td>ceval-business_administration</td>
+<td>c1614e</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>60.61</td>
+</tr>
+<tr class="odd">
+<td>ceval-marxism</td>
+<td>cf874c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>84.21</td>
+</tr>
+<tr class="even">
+<td>ceval-mao_zedong_thought</td>
+<td>51c7a4</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>70.83</td>
+</tr>
+<tr class="odd">
+<td>ceval-education_science</td>
+<td>591fee</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>72.41</td>
+</tr>
+<tr class="even">
+<td>ceval-teacher_qualification</td>
+<td>4e4ced</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>79.55</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_politics</td>
+<td>5c0de2</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>89.47</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_geography</td>
+<td>865461</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_politics</td>
+<td>5be3e7</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>76.19</td>
+</tr>
+<tr class="even">
+<td>ceval-middle_school_geography</td>
+<td>8a63be</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-modern_chinese_history</td>
+<td>fc01af</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>69.57</td>
+</tr>
+<tr class="even">
+<td>ceval-ideological_and_moral_cultivation</td>
+<td>a2aa4a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>84.21</td>
+</tr>
+<tr class="odd">
+<td>ceval-logic</td>
+<td>f5b022</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>54.55</td>
+</tr>
+<tr class="even">
+<td>ceval-law</td>
+<td>a110a1</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>50.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-chinese_language_and_literature</td>
+<td>0f8b68</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>56.52</td>
+</tr>
+<tr class="even">
+<td>ceval-art_studies</td>
+<td>2a1300</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>66.67</td>
+</tr>
+<tr class="odd">
+<td>ceval-professional_tour_guide</td>
+<td>4e673e</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>82.76</td>
+</tr>
+<tr class="even">
+<td>ceval-legal_professional</td>
+<td>ce8787</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>52.17</td>
+</tr>
+<tr class="odd">
+<td>ceval-high_school_chinese</td>
+<td>315705</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>73.68</td>
+</tr>
+<tr class="even">
+<td>ceval-high_school_history</td>
+<td>7eb30a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td>ceval-middle_school_history</td>
+<td>48ab4a</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>86.36</td>
+</tr>
+<tr class="even">
+<td>ceval-civil_servant</td>
+<td>87d061</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.83</td>
+</tr>
+<tr class="odd">
+<td>ceval-sports_science</td>
+<td>70f27b</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>78.95</td>
+</tr>
+<tr class="even">
+<td>ceval-plant_protection</td>
+<td>8941f9</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>77.27</td>
+</tr>
+<tr class="odd">
+<td>ceval-basic_medicine</td>
+<td>c409d6</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>63.16</td>
+</tr>
+<tr class="even">
+<td>ceval-clinical_medicine</td>
+<td>49e82d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>59.09</td>
+</tr>
+<tr class="odd">
+<td>ceval-urban_and_rural_planner</td>
+<td>95b885</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>67.39</td>
+</tr>
+<tr class="even">
+<td>ceval-accountant</td>
+<td>002837</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>48.98</td>
+</tr>
+<tr class="odd">
+<td>ceval-fire_engineer</td>
+<td>bc23f5</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>54.84</td>
+</tr>
+<tr class="even">
+<td>ceval-environmental_impact_assessment_engineer</td>
+<td>c64e2d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>58.06</td>
+</tr>
+<tr class="odd">
+<td>ceval-tax_accountant</td>
+<td>3a5e3c</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>44.90</td>
+</tr>
+<tr class="even">
+<td>ceval-physician</td>
+<td>6e277d</td>
+<td>accuracy</td>
+<td>gen</td>
+<td>57.14</td>
+</tr>
+<tr class="odd">
+<td>ceval-stem</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>52.04</td>
+</tr>
+<tr class="even">
+<td>ceval-social-science</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>72.05</td>
+</tr>
+<tr class="odd">
+<td>ceval-humanities</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>68.32</td>
+</tr>
+<tr class="even">
+<td>ceval-other</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>61.24</td>
+</tr>
+<tr class="odd">
+<td>ceval-hard</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>35.88</td>
+</tr>
+<tr class="even">
+<td>ceval</td>
+<td>-</td>
+<td>naive_average</td>
+<td>gen</td>
+<td>61.28</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AE%9E%E6%88%98%E8%90%A5/" rel="tag"># 大模型实战营</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/18/mmtutorial-6-note/" rel="prev" title="大模型实战营第六次课笔记">
+                  <i class="fa fa-chevron-left"></i> 大模型实战营第六次课笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/03/18/sera-llm/" rel="next" title="sera-llm 实现日志">
+                  sera-llm 实现日志 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charles Gao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
