@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"schweitzergao.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是大模型实战营-初夏营第三次课的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型实战营-初夏营-第三次课笔记">
+<meta property="og:url" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/index.html">
+<meta property="og:site_name" content="All embarks, few finishes">
+<meta property="og:description" content="这是大模型实战营-初夏营第三次课的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/1.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/2.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/3.PNG">
+<meta property="og:image" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/4.PNG">
+<meta property="article:published_time" content="2024-05-17T13:54:09.000Z">
+<meta property="article:modified_time" content="2024-05-19T04:40:23.425Z">
+<meta property="article:author" content="Charles Gao">
+<meta property="article:tag" content="大模型实战营-初夏营">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/1.PNG">
+
+
+<link rel="canonical" href="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/","path":"2024/05/17/mmtutorial-II-3-note/","title":"大模型实战营-初夏营-第三次课笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>大模型实战营-初夏营-第三次课笔记 | All embarks, few finishes</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">All embarks, few finishes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Charles Gao's Site</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">conda 虚拟环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%89%80%E9%9C%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E4%BB%93%E5%BA%93"><span class="nav-number">2.2.</span> <span class="nav-text">下载所需模型和仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9E%8B%E8%B7%AF%E5%BE%84"><span class="nav-number">2.3.</span> <span class="nav-text">修改模型路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E8%AF%AD%E6%96%99%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">构建语料库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%B1%86%E5%93%A5"><span class="nav-number">4.</span> <span class="nav-text">运行豆哥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradio%E7%BD%91%E9%A1%B5demo%E6%90%AD%E5%BB%BA"><span class="nav-number">5.</span> <span class="nav-text">gradio网页demo搭建</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charles Gao</p>
+  <div class="site-description" itemprop="description">Schweitzer Gao</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SchweitzerGAO" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SchweitzerGAO" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:gaoyang010531@qq.com" title="E-Mail → mailto:gaoyang010531@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://schweitzergao.github.io/2024/05/17/mmtutorial-II-3-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charles Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All embarks, few finishes">
+      <meta itemprop="description" content="Schweitzer Gao">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="大模型实战营-初夏营-第三次课笔记 | All embarks, few finishes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大模型实战营-初夏营-第三次课笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-17 21:54:09" itemprop="dateCreated datePublished" datetime="2024-05-17T21:54:09+08:00">2024-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-19 12:40:23" itemprop="dateModified" datetime="2024-05-19T12:40:23+08:00">2024-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>这是<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QA4m1F7t4/?vd_source=96a5e3c8d3ee54a5b89d246a66d277e3">大模型实战营-初夏营第三次课</a>的笔记</em></p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>早就听闻<a
+target="_blank" rel="noopener" href="https://github.com/InternLM/HuixiangDou">茴香豆</a>——“豆哥”的鼎鼎大名，现在借着初夏营这个机会体验一把，所以先把这个作业做了</p>
+<h2 id="环境配置">环境配置</h2>
+<h3 id="conda-虚拟环境配置">conda 虚拟环境配置</h3>
+<p>与第一期实战营不同，本期实战营在Intern
+Studio上提供了非常方便的环境配置命令，仅需运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">studio-conda -o internlm-base -t InternLM2_Huixiangdou</span><br></pre></td></tr></table></figure>
+<p>即可一键配置运行豆哥所需的环境</p>
+<p>在此基础之上，我们还需要安装一些python包:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 python 依赖</span></span><br><span class="line"><span class="comment"># pip install -r requirements.txt</span></span><br><span class="line"></span><br><span class="line">pip install protobuf==4.25.3 accelerate==0.28.0 aiohttp==3.9.3 auto-gptq==0.7.1 bcembedding==0.1.3 beautifulsoup4==4.8.2 einops==0.7.0 faiss-gpu==1.7.2 langchain==0.1.14 loguru==0.7.2 lxml_html_clean==0.1.0 openai==1.16.1 openpyxl==3.1.2 pandas==2.2.1 pydantic==2.6.4 pymupdf==1.24.1 python-docx==1.1.0 pytoml==0.1.21 readability-lxml==0.8.1 redis==5.0.3 requests==2.31.0 scikit-learn==1.4.1.post1 sentence_transformers==2.2.2 textract==1.6.5 tiktoken==0.6.0 transformers==4.39.3 transformers_stream_generator==0.0.5 unstructured==0.11.2</span><br><span class="line"></span><br><span class="line"><span class="comment">## 因为 Intern Studio 不支持对系统文件的永久修改，在 Intern Studio 安装部署的同学不建议安装 Word 依赖，后续的操作和作业不会涉及 Word 解析。</span></span><br><span class="line"><span class="comment">## 想要自己尝试解析 Word 文件的同学，uncomment 掉下面这行，安装解析 .doc .docx 必需的依赖</span></span><br><span class="line"><span class="comment"># apt update &amp;&amp; apt -y install python-dev python libxml2-dev libxslt1-dev antiword unrtf poppler-utils pstotext tesseract-ocr flac ffmpeg lame libmad0 libsox-fmt-mp3 sox libjpeg-dev swig libpulse-dev</span></span><br></pre></td></tr></table></figure>
+<p>激活环境之后可以运行下面的命令清理配置环境过程中的缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip cache purge</span><br><span class="line">conda clean -y --all</span><br></pre></td></tr></table></figure>
+<p>其中第二条命令清理出了12GB还多的空闲空间(也有可能是之前的东西太多没清理哈哈)：</p>
+<p><img src="1.PNG" /></p>
+<h3 id="下载所需模型和仓库">下载所需模型和仓库</h3>
+<ul>
+<li>bce-embedding，bce-reranker和InternLM-2模型</li>
+</ul>
+<p>Intern Studio上已经准备好了上述模型的权重，只需建立软链接即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root &amp;&amp; <span class="built_in">mkdir</span> model</span><br><span class="line"><span class="comment"># BCE系列模型</span></span><br><span class="line"><span class="built_in">ln</span> -s /root/share/new_models/maidalun1020/bce-embedding-base_v1 /root/model/bce-embedding-base_</span><br><span class="line"><span class="built_in">ln</span> -s /root/share/new_models/maidalun1020/bce-reranker-base_v1/ /root/model/bce-reranker-base_v1</span><br><span class="line"><span class="comment"># InternLM2-Chat-7B</span></span><br><span class="line"><span class="built_in">ln</span> -s /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-7b /root/model/internlm2-chat-7b</span><br></pre></td></tr></table></figure>
+<ul>
+<li>clone 源码并checkout到课程对应分支</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line"><span class="comment"># 克隆代码仓库</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/internlm/huixiangdou &amp;&amp; <span class="built_in">cd</span> huixiangdou</span><br><span class="line">git checkout 63f2eef0e6e4ac113b05ede0316b193948a42cda</span><br></pre></td></tr></table></figure>
+<h3 id="修改模型路径">修改模型路径</h3>
+<p>我们还需要修改<code>HuiXiangDou/config.ini</code>中的模型路径，文档是利用<code>sed</code>命令直接在命令行修改的，这些命令的详细解释可以参考<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/692030192">九月大佬的笔记</a>还可以直接用VScode
+SSH连接远程主机，直接在GUI上修改成下面这样也行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># L6</span></span><br><span class="line"><span class="attr">embedding_model_path</span> = <span class="string">&quot;/root/model/bce-embedding-base_v1&quot;</span></span><br><span class="line"><span class="comment"># L7</span></span><br><span class="line"><span class="attr">reranker_model_path</span> = <span class="string">&quot;/root/model/bce-reranker-base_v1&quot;</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="comment"># L29</span></span><br><span class="line"><span class="attr">local_llm_path</span> = <span class="string">&quot;/root/model/internlm2-chat-7b&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="构建语料库">构建语料库</h2>
+<ul>
+<li>知识库语料</li>
+</ul>
+<p>我们的目标是用豆哥做一个基于豆哥文档的RAG助手，主要用于解答用户关于豆哥的问题。首先需要从github上再次下载豆哥的源码作为语料：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/huixiangdou &amp;&amp; <span class="built_in">mkdir</span> repodir</span><br><span class="line"><span class="comment"># depth=1 仅clone最近一次commit的分支</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/internlm/huixiangdou --depth=1 repodir/huixiangdou</span><br></pre></td></tr></table></figure>
+<ul>
+<li>接受，拒答问题语料：</li>
+</ul>
+<p>除了语料知识的向量数据库，茴香豆建立接受和拒答两个向量数据库，用来在检索的过程中更加精确的判断提问的相关性，我们需要建立这两个语料库:</p>
+<ol type="1">
+<li>接受问题语料，即希望茴香豆助手回答的示例问题</li>
+</ol>
+<p>存储在 <code>HuiXiangDou/resource/good_questions.json</code> 中，我们需要将原有的文件备份起来，生成一份新的语料，新语料和豆哥文档相关性更强</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/huixiangdou</span><br><span class="line"><span class="built_in">mv</span> resource/good_questions.json resource/good_questions_bk.json</span><br><span class="line"><span class="comment"># 这个echo命令可以忽略，直接在GUI中建立新文件，写入保存即可</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;[</span></span><br><span class="line"><span class="string">    &quot;mmpose中怎么调用mmyolo接口&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose实现姿态估计后怎么实现行为识别&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose执行提取关键点命令不是分为两步吗，一步是目标检测，另一步是关键点提取，我现在目标检测这部分的代码是demo/topdown_demo_with_mmdet.py demo/mmdetection_cfg/faster_rcnn_r50_fpn_coco.py checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth   现在我想把这个mmdet的checkpoints换位yolo的，那么应该怎么操作&quot;,</span></span><br><span class="line"><span class="string">    &quot;在mmdetection中，如何同时加载两个数据集，两个dataloader&quot;,</span></span><br><span class="line"><span class="string">    &quot;如何将mmdetection2.28.2的retinanet配置文件改为单尺度的呢？&quot;,</span></span><br><span class="line"><span class="string">    &quot;1.MMPose_Tutorial.ipynb、inferencer_demo.py、image_demo.py、bottomup_demo.py、body3d_pose_lifter_demo.py这几个文件和topdown_demo_with_mmdet.py的区别是什么，\n2.我如果要使用mmdet是不是就只能使用topdown_demo_with_mmdet.py文件，&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose 测试 map 一直是 0 怎么办？&quot;,</span></span><br><span class="line"><span class="string">    &quot;如何使用mmpose检测人体关键点？&quot;,</span></span><br><span class="line"><span class="string">    &quot;我使用的数据集是labelme标注的，我想知道mmpose的数据集都是什么样式的，全都是单目标的数据集标注，还是里边也有多目标然后进行标注&quot;,</span></span><br><span class="line"><span class="string">    &quot;如何生成openmmpose的c++推理脚本&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose的目标检测阶段调用的模型，一定要是demo文件夹下的文件吗，有没有其他路径下的文件&quot;,</span></span><br><span class="line"><span class="string">    &quot;mmpose可以实现行为识别吗，如果要实现的话应该怎么做&quot;,</span></span><br><span class="line"><span class="string">    &quot;我在mmyolo的v0.6.0 (15/8/2023)更新日志里看到了他新增了支持基于 MMPose 的 YOLOX-Pose，我现在是不是只需要在mmpose/project/yolox-Pose内做出一些设置就可以，换掉demo/mmdetection_cfg/faster_rcnn_r50_fpn_coco.py 改用mmyolo来进行目标检测了&quot;,</span></span><br><span class="line"><span class="string">    &quot;mac m1从源码安装的mmpose是x86_64的&quot;,</span></span><br><span class="line"><span class="string">    &quot;想请教一下mmpose有没有提供可以读取外接摄像头，做3d姿态并达到实时的项目呀？&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 是什么？&quot;,</span></span><br><span class="line"><span class="string">    &quot;使用科研仪器需要注意什么？&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 是什么？&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 是什么？&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 能部署到微信吗？&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 怎么应用到飞书&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 能部署到微信群吗？&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 怎么应用到飞书群&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 能部署到微信吗？&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 怎么应用到飞书&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 能部署到微信群吗？&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 怎么应用到飞书群&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 有哪些应用场景&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 有什么用&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 的优势有哪些？&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 已经应用的场景&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 已经应用的场景&quot;,</span></span><br><span class="line"><span class="string">    &quot;huixiangdou 怎么安装&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 怎么安装&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 最新版本是什么&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 支持哪些大模型&quot;,</span></span><br><span class="line"><span class="string">    &quot;茴香豆 支持哪些通讯软件&quot;,</span></span><br><span class="line"><span class="string">    &quot;config.ini 文件怎么配置&quot;,</span></span><br><span class="line"><span class="string">    &quot;remote_llm_model 可以填哪些模型?&quot;</span></span><br><span class="line"><span class="string">]&#x27;</span> &gt; /root/huixiangdou/resource/good_questions.json</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>拒绝问题语料，即希望茴香豆助手拒答的示例问题</li>
+</ol>
+<p>存储在<code>HuiXiangDou/resource/bad_questions.json</code> 中，
+其中多为技术无关的主题或闲聊。我们无需改动这些语料</p>
+<ol start="3" type="1">
+<li>测试问题</li>
+</ol>
+<p>存储在<code>HuiXiangDou/test_queries.json</code>中，用于测试拒答效果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/huixiangdou</span><br><span class="line"><span class="comment"># 这个echo命令可以忽略，直接在GUI中建立新文件，写入保存即可</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;[</span></span><br><span class="line"><span class="string">&quot;huixiangdou 是什么？&quot;,</span></span><br><span class="line"><span class="string">&quot;你好，介绍下自己&quot;</span></span><br><span class="line"><span class="string">]&#x27;</span> &gt; ./test_queries.json</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立向量数据库并测试</li>
+</ul>
+<p>运行以下命令建立向量数据库并使用测试问题测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m huixiangdou.service.feature_store --sample ./test_queries.json</span><br></pre></td></tr></table></figure>
+<p>从命令行输出可以看到，豆哥接受第一个问题并且给出了最可能包含答案的文档<code>README.md</code>而且豆哥拒绝回答第二个问题：</p>
+<p><img src="2.PNG" /></p>
+<h2 id="运行豆哥">运行豆哥</h2>
+<p>修改一下<code>main.py</code>中的测试query:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;74s/.*/    queries = [&quot;huixiangdou 是什么？&quot;, &quot;茴香豆怎么部署到微信群&quot;, &quot;今天天气怎么样？&quot;]/&#x27;</span> /root/huixiangdou/huixiangdou/main.py</span><br></pre></td></tr></table></figure>
+<p>然后直接运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m huixiangdou.main --standalone</span><br></pre></td></tr></table></figure>
+<p>效果如下</p>
+<p><img src="3.PNG" /></p>
+<p>可以看到，豆哥的回答过程主要包括三个部分</p>
+<ol type="1">
+<li><p>问题打分：基于一定规则利用大模型给用户的问题打分（0~10分）低于一定阈值会直接拒答；看了一下技术报告和源码，<strong>大模型打分之前</strong>还会通过用户问题与示例问题进行余弦相似度计算进行一次打分，如果所有示例问题打分均低于配置文件中的<code>reject_throttle</code>,
+则直接拒答；</p></li>
+<li><p>问题主题提取：利用大模型提取问题主题，与技术不相关的主题（如天气）会被拒答；</p></li>
+<li><p>检索并回答，就是RAG的通用pipeline了</p></li>
+</ol>
+<h2 id="gradio网页demo搭建">gradio网页demo搭建</h2>
+<p>首先安装<code>gradio</code>依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gradio==4.25.0 redis==5.0.3 flask==3.0.2 lark_oapi==1.2.4</span><br></pre></td></tr></table></figure>
+<p><code>gradio</code>, 启动!</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/HuiXiangDou</span><br><span class="line">python3 -m tests.test_query_gradio </span><br></pre></td></tr></table></figure>
+<p>可以使用VSCode的<code>Port</code>页面直接将远端<code>7860</code>端口映射到本地，之后直接访问http://127.0.0.1:7860即可进入页面</p>
+<p>提问：茴香豆怎么部署到微信群？</p>
+<p>回答：</p>
+<p><img src="4.PNG" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AE%9E%E6%88%98%E8%90%A5-%E5%88%9D%E5%A4%8F%E8%90%A5/" rel="tag"><i class="fa fa-tag"></i> 大模型实战营-初夏营</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/18/sera-llm/" rel="prev" title="sera-llm 实现日志">
+                  <i class="fa fa-chevron-left"></i> sera-llm 实现日志
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charles Gao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"SchweitzerGAO","repo":"schweitzergao.github.io","client_id":"75e4fa013a51f19dad1c","client_secret":"d0f624ba04027f9af6fb1710ed5a2c7428fc549d","admin_user":"SchweitzerGAO","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0f6118c1fb50f75d8cd05c530de558b4"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
